@@ -1,0 +1,122 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg-color-left: rgba(87, 84, 236, 0.7);
+  --bg-color-right: rgba(43, 43, 43, 0.8);
+  --hover-button-left: rgba(87, 84, 236, 1);
+  --hover-button-right: rgba(28, 122, 28, 1);
+  --big-width-hover: 75%;
+  --small-width-hover: 25%;
+}
+
+body {
+  background-color: var(--bg-color-body);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 16px;
+  height: 100%;
+  overflow-x: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.main {
+  height: 100vh;
+  position: relative;
+  width: 100%;
+}
+
+.item {
+  align-items: center;
+  display: flex;
+  background-repeat: no-repeat;
+  background-size: cover;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  overflow: hidden;
+  position: absolute;
+  transition: all 1s ease;
+  width: 50%;
+  z-index: 1;
+}
+
+.item.left {
+  background-image: url("https://50projects50days.com/projects/split-landing-page/ps.jpg");
+  left: 0;
+}
+
+.item.right {
+  background-image: url("https://50projects50days.com/projects/split-landing-page/xbox.jpg");
+  right: 0;
+}
+
+.item.left::before,
+.item.right::before {
+  content: "";
+  height: 100%;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+}
+
+.item.left::before {
+  background-color: var(--bg-color-left);
+}
+
+.item.right::before {
+  background-color: var(--bg-color-right);
+}
+
+.item.left:hover {
+  width: var(--big-width-hover);
+}
+
+.item.left:hover + .item.right {
+  width: var(--small-width-hover);
+}
+
+.item.right:hover {
+  width: var(--big-width-hover);
+}
+
+.item.right:hover + .item.left {
+  width: var(--small-width-hover);
+}
+
+.item h1 {
+  color: #fff;
+  font-size: 60px;
+  margin-bottom: 20px;
+  white-space: nowrap;
+}
+
+.item button {
+  background-color: transparent;
+  border: 3px solid #fff;
+  color: #fff;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 20px 0;
+  text-transform: uppercase;
+  transition: all 0.3s linear;
+  width: 220px;
+}
+
+.item.left button:hover {
+  background-color: var(--hover-button-left);
+  border-color: var(--hover-button-left);
+}
+
+.item.right button:hover {
+  background-color: var(--hover-button-right);
+  border-color: var(--hover-button-right);
+}
